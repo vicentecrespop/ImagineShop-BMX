@@ -90,7 +90,7 @@ export default function Carrinho() {
 
     return (
         <>
-            <form action="/api/checkout" method="POST" className="hero w-100 d-flex px-5 my-5">
+            <form action="/api/checkout" method="POST" className="hero w-100 d-flex px-5 my-5" onSubmit={() => clearAll()}>
 
                 <div className="cart-left flex-grow-1 d-flex flex-column">
                     {products.map((product, index) => (
