@@ -24,14 +24,12 @@ const CartProvider = ({ children }) => {
         }
     }
 
-    const getTotalProducts = () => {
-        const products = getProducts()
+    const getTotalProducts = (products) => {
         const total = products.reduce((sum, cur) => sum + cur.price, 0)
         return (new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'})).format(total)
     }
 
-    const getTotalValue = () => {
-        const products = getProducts()
+    const getTotalValue = (products) => {
         const total = products.reduce((sum, cur) => sum + cur.price, 0)
         return (new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'})).format(total + ShippingValue)
     }
