@@ -1,0 +1,144 @@
+:root {
+    --navbar-height: 130px;
+    --color-orange: #c55d25;
+    --color-gray: #3b3e3a;
+}
+
+.loadingAnimation {
+    position: absolute;
+    right: 10px;
+    animation: is-rotating 1s infinite;
+    border: 6px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: black;
+    height: 32px;
+    width: 32px;
+  }
+  
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  
+.pointer {
+    cursor: pointer;
+}
+
+.color-primary {
+  color: var(--color-orange);
+}
+
+.bg-color-primary {
+  background-color: var(--color-orange);
+}
+  
+.changeFormButton:hover {
+    border-bottom: 1px solid black;
+}
+
+.navbar-container {
+    height: var(--navbar-height);
+    z-index: 100;
+}
+
+.navbar-dropdown {
+    margin-top: var(--navbar-height);
+}
+
+.hero {
+  padding-top: var(--navbar-height);
+}
+
+.video-hero--info {
+  width: 25vw;
+  min-width:  320px;
+}
+
+.video-hero--image {
+  transform: rotate(-9deg);
+}
+
+.video-hero--button:hover {
+  color: var(--color-orange) !important;
+}
+
+.category-item--info {
+  font-size: 1.8vw !important;
+  padding: 30px;
+  margin-bottom: 16px;
+}
+
+.product-container {
+  width: 325px;
+  height: 375px;
+}
+
+.image-container:hover span {
+  display: flex !important;
+}
+
+.image-container:hover img {
+  opacity: 50%;
+}
+
+.login, .register {
+  margin-top: var(--navbar-height);
+}
+
+.brands-names {
+  margin-bottom: -100px;
+}
+
+.brands-button {
+  font-weight: bold;
+  color: var(--color-gray);
+  padding: 10px 30px;
+  border-bottom: 1px solid var(--color-gray);
+  transition: ease .5s;
+}
+
+.brands-button:hover {
+  background-color: var(--color-gray);
+  color: #fff;
+}
+
+.selected-brands-button {
+  color: var(--color-orange);
+  border-bottom: 1px solid var(--color-orange) !important;
+}
+
+.selected-brands-button:hover {
+  background-color: var(--color-orange);
+  color: #fff;
+}
+
+.search-title {
+  margin-bottom: -100px;
+}
+
+
+@media screen and (max-width: 700px) {
+    .video-hero--image--bottom {
+      display: none;
+    }
+
+    .video-hero--info {
+      min-width: 200px;
+      font-size: 8px !important;
+    }
+
+    .category-item--info {
+      padding: 10px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .category-item--info {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0;
+    }
+}
+
+  
