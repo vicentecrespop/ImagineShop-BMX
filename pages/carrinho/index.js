@@ -24,15 +24,18 @@ export default function Carrinho() {
 
 
     useEffect(() => {
+        enableCheckout()
+    }, [name, email, address, cep, complement, number])
+
+    useEffect(() => {
         if(products.length === 0) {
             const cartProducts = getProducts()
             setProducts(cartProducts)
         }
-        enableCheckout()
-    }, [name, email, address, cep, complement, number])
+    }, [])
 
     const ProductsTotal = () => {
-        const total = getTotalProducts()
+        const total = getTotalProducts(products)
         return (
             <span className="mb-3 mt-5">Produtos : {total}</span>
         )
@@ -46,7 +49,7 @@ export default function Carrinho() {
     }
 
     const Total = () => {
-        const total = getTotalValue()
+        const total = getTotalValue(products)
         return (
             <span className="mb-3">Total: {total}</span>
         )
@@ -60,6 +63,18 @@ export default function Carrinho() {
         clearAll()
         setProducts([])
         setEnablePurchase(false)
+    }
+
+    const checkoutError = () => {
+        let msg = 'Preencha todos os campos.'
+        if(products.length === 0) {
+            msg = 'Adicione produtos no carrinho.'
+        }
+        toast.error(msg, {
+            position: 'bottom-right',
+            autoClose: 1000
+        })
+        return
     }
 
     const enableCheckout = () => {
@@ -110,17 +125,7 @@ export default function Carrinho() {
                         <Total />
                     </div>
                     {!enablePurchase && (
-                        <div onClick={() => {
-                            let msg = 'Preencha todos os campos.'
-                            if(products.length === 0) {
-                                msg = 'Adicione produtos no carrinho.'
-                            }
-                            toast.error(msg, {
-                                position: 'bottom-right',
-                                autoClose: 1000
-                            })
-                            return
-                        }} 
+                        <div onClick={() => checkoutError()} 
                             className="bg-secondary border-0 text-black px-5 py-3 rounded-5 fw-bold pointer"
                             >
                                 Finalizar Compra
