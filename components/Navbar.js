@@ -22,18 +22,28 @@ export default function Navbar() {
         router.push(`/search/${search}`)
     }
 
+    const toggleNavbar = () => {
+        const navbar = document.querySelector('div.navbar-items-container')
+        navbar.classList.toggle('navbar-items-container--active')
+    }
+
     return (
         <>
             <nav className="navbar-container container-fluid shadow-lg position-fixed top-0 bg-white px-4 pt-4 pb-2">
-                <div className="row">
-                    <div className="col-3 d-flex justify-content-end">
+                <div className="row navbar-row">
+                    <div className="col-12 col-sm-4 d-flex justify-content-center align-items-center">
+                        <span className="navbar-button" onClick={() => toggleNavbar()}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                                <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                        </span>
                         <Link href="/">
                             <Image src="/logo.png" width={200} height={75} alt="Logo ImagineShop"/>
                         </Link>
                     </div>
-                    <div className="col-9">
+                    <div className="col-8 navbar-right">
                         <div className="row d-flex align-items-center justify-content-end">
-                            <div className="col-12 d-flex justify-content-end">    
+                            <div className="cart-container col-12 d-flex">    
                                 <Link href="carrinho" className="ms-4 d-flex align-items-center text-decoration-none text-black">
                                     <div className="position-relative">
                                         {totalProducts > 0 && (
@@ -50,23 +60,31 @@ export default function Navbar() {
                                 </Link>
                             </div>
                         </div>
-                        <div className="row d-flex justify-content-end pt-3">
-                            <div className="col-10 d-flex justify-content-end">
-                                <Link href="bikes" className="bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Bikes</Link>
-                                <span className="fs-5">/</span>
-                                <Link href="pecas" className="bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Peças</Link>
-                                <span className="fs-5">/</span>
-                                <Link href="quadros" className="bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Quadros</Link>
-                                <span className="fs-5">/</span>
-                                <Link href="marcas" className="bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Marcas</Link>
-                                <span className="fs-5">/</span>
-                                <Link href="roupas" className="bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Roupas</Link>
-                                <span className="fs-5">/</span>
-                                <Link href="protecao" className="bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Proteção</Link>
-                                <span className="fs-5">/</span>
-                                <Link href="acessorios" className="bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Acessórios</Link>
+                        <div className="cart-container row d-flex pt-3">
+                            <div className="navbar-items-container col-10 justify-content-end bg-white">
+                                <div className="navbar-close position-relative justify-content-center my-5 mx-2">
+                                    <span>Menu</span>
+                                    <span className="position-absolute top-0 end-0" onClick={() => toggleNavbar()}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+                                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <Link href="bikes" className="navbar-item bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Bikes</Link>
+                                <span className="navbar-items-separator fs-5">/</span>
+                                <Link href="pecas" className="navbar-item bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Peças</Link>
+                                <span className="navbar-items-separator fs-5">/</span>
+                                <Link href="quadros" className="navbar-item bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Quadros</Link>
+                                <span className="navbar-items-separator fs-5">/</span>
+                                <Link href="marcas" className="navbar-item bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Marcas</Link>
+                                <span className="navbar-items-separator fs-5">/</span>
+                                <Link href="roupas" className="navbar-item bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Roupas</Link>
+                                <span className="navbar-items-separator fs-5">/</span>
+                                <Link href="protecao" className="navbar-item bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Proteção</Link>
+                                <span className="navbar-items-separator fs-5">/</span>
+                                <Link href="acessorios" className="navbar-item bg-white border-0 mx-2 fw-bold text-uppercase fs-5 text-decoration-none text-dark">Acessórios</Link>
                             </div>
-                            <form onSubmit={e => searchProduct(e)} className="col-2 position-relative d-flex align-items-center justify-content-end">
+                            <form onSubmit={e => searchProduct(e)} className="search-container col-2 position-relative d-flex align-items-center">
                                 <button className="position-absolute start-0 ms-3 border-0 bg-white" type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
